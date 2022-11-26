@@ -17,10 +17,8 @@ use Flarum\Api\Serializer\UserSerializer;
 return [
     (new Extend\Frontend('forum'))
         ->js(__DIR__.'/js/dist/forum.js')
-        ->css(__DIR__.'/less/forum.less')
-
-    new Extend\Locales(__DIR__.'/locale')
+        ->css(__DIR__.'/less/forum.less'),
 
     (new Extend\ApiSerializer(UserSerializer::class))
-        ->attributes(AddUserAttributes::class),
+        ->attributes(AddUserAttributes::class)
 ];
