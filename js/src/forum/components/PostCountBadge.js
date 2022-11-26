@@ -10,9 +10,7 @@ export default class PostCountBadge extends Component {
     return (
       <span>
         <Tooltip
-          text={app.translator.trans('justoverclock-auto-post-count-badge.forum.hasWritten', {
-            count: userPosts,
-          })}
+          text={userPosts + ' 次回帖'}
         >
           <span className="auto-badge">
             <i class={userClass + ' autopost'} />

@@ -16,9 +16,7 @@ use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\User;
 
 class AddUserAttributes
-{
-    const prefix = 'justoverclock-auto-post-count-badge.';
-    
+{   
     /**
      * @var SettingsRepositoryInterface
      */
@@ -71,33 +69,27 @@ class AddUserAttributes
         }
     }
 
-    private function getValue(string $key, string $default): string
-    {
-        $value = $this->settings->get(self::prefix . $key);
-        return empty($value) ? $default : $value;
-    }
-
     private function getBadgeForLevel(int $level): string
     {
         switch ($level) {
             case $level === 1:
-                return $this->getValue('levelOne', 'fas fa-baby');
+                return 'fas fa-chess-pawn';
             case $level === 2:
-                return $this->getValue('levelTwo', 'fas fa-child');
+                return 'fas fa-chess-pawn';
             case $level === 3:
-                return $this->getValue('levelThree', 'fas fa-bullhorn');
+                return 'fas fa-chess-pawn';
             case $level === 4:
-                return $this->getValue('levelFour', 'fas fa-chalkboard-teacher');
+                return 'fas fa-chess-pawn';
             case $level === 5:
-                return $this->getValue('levelFive', 'fab fa-optin-monster');
+                return 'fas fa-chess-knight';
             case $level === 6:
-                return $this->getValue('levelSix', 'fas fa-graduation-cap');
+                return 'fas fa-chess-bishop';
             case $level === 7:
-                return $this->getValue('levelSeven', 'fas fa-medal');
+                return 'fas fa-chess-rook';
             case $level === 8:
-                return $this->getValue('levelEight', 'fas fa-stethoscope');
+                return 'fas fa-chess-king';
             case $level === 9:
-                return $this->getValue('levelNine', 'fas fa-user-shield');
+                return 'fas fa-chess-king';
             default:
                 return '';
         }
@@ -107,23 +99,23 @@ class AddUserAttributes
     {
         switch ($level) {
             case $level === 1:
-                return $this->getValue('badgeOne', 'The Baby');
+                return 'Lv1-泊车小弟';
             case $level === 2:
-                return $this->getValue('badgeTwo', 'The Newbie');
+                return 'Lv2-驾校开除';
             case $level === 3:
-                return $this->getValue('badgeThree', 'The Talker');
+                return 'Lv3-马路菜鸟';
             case $level === 4:
-                return $this->getValue('badgeFour', 'The Teacher');
+                return 'Lv4-学员车手';
             case $level === 5:
-                return $this->getValue('badgeFive', 'The Monster!');
+                return 'Lv5-车坛新星';
             case $level === 6:
-                return $this->getValue('badgeSix', 'The Guru!');
+                return 'Lv6-初级车手';
             case $level === 7:
-                return $this->getValue('badgeSeven', 'The Flarumist!');
+                return 'Lv7-顶级车手';
             case $level === 8:
-                return $this->getValue('badgeEight', 'Expert');
+                return 'Lv8-传奇车手';
             case $level === 9:
-                return $this->getValue('badgeNine', 'Untouchable');
+                return 'Lv9-Capo传奇';
             default:
                 return '';
         }

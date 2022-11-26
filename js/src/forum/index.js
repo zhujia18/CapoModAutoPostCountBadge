@@ -5,7 +5,7 @@ import User from 'flarum/common/models/User';
 import Model from 'flarum/common/Model';
 import PostCountBadge from './components/PostCountBadge';
 
-app.initializers.add('justoverclock/auto-post-count-badge', () => {
+app.initializers.add('capomod/auto-post-count-badge', () => {
   User.prototype.autoCountBadge = Model.attribute('autoCountBadge');
   User.prototype.autoCountBadgeLabel = Model.attribute('autoCountBadgeLabel');
 

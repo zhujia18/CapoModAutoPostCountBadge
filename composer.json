@@ -1,32 +1,19 @@
 {
     "name": "capomod/auto-post-count-badge",
-    "description": "Add Automatic badge to user after certain number of posts",
+    "description": "CapoMod Custom AutoPostCountBadge",
     "keywords": [
-        "post badge",
-        "badge",
-        "post count badge"
+        "flarum"
     ],
     "type": "flarum-extension",
     "license": "MIT",
-    "support": {
-        "forum": "https://discuss.flarum.org/d/29479",
-        "source": "https://github.com/justoverclockl/auto-post-count-badge",
-        "issues": "https://github.com/justoverclockl/auto-post-count-badge/issues"
-    },
     "require": {
-        "flarum/core": "^1.0.0"
+        "flarum/core": "^1.2.0"
     },
     "authors": [
         {
-            "name": "Marco Colia",
-            "email": "info@flarum.it",
+            "name": "Jasper",
+            "email": "443493410@qq.com",
             "role": "Developer"
-        }
-    ],
-    "funding": [
-        {
-            "type": "website",
-            "url": "https://www.paypal.com/donate?hosted_button_id=25WSH565TJCLE"
         }
     ],
     "autoload": {
@@ -36,13 +23,56 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Auto Post Badge",
-            "category": "feature",
+            "title": "CapoMod AutoPostCountBadge",
+            "category": "theme",
             "icon": {
-                "name": "fas fa-medal",
-                "backgroundColor": "orange",
-                "color": "black"
+                "name": "fas fa-signal",
+                "color": "#e74c3c",
+                "backgroundColor": "#fff"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "admin": true,
+                "forum": true,
+                "js": true,
+                "jsCommon": true,
+                "css": true,
+                "locale": true,
+                "gitConf": true,
+                "githubActions": true,
+                "prettier": true,
+                "typescript": true,
+                "bundlewatch": false,
+                "backendTesting": true,
+                "editorConfig": true,
+                "styleci": true
             }
         }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload-dev": {
+        "psr-4": {
+            "Capomod\\HomePage\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "@test:unit",
+            "@test:integration"
+        ],
+        "test:unit": "phpunit -c tests/phpunit.unit.xml",
+        "test:integration": "phpunit -c tests/phpunit.integration.xml",
+        "test:setup": "@php tests/integration/setup.php"
+    },
+    "scripts-descriptions": {
+        "test": "Runs all tests.",
+        "test:unit": "Runs all unit tests.",
+        "test:integration": "Runs all integration tests.",
+        "test:setup": "Sets up a database for use with integration tests. Execute this only once."
+    },
+    "require-dev": {
+        "flarum/testing": "^1.0.0"
     }
 }
