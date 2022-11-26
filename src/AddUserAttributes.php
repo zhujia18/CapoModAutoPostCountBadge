@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Justoverclock\AutoPostCountBadge;
+namespace CapoMod\AutoPostCountBadge;
 
 use Flarum\Api\Serializer\UserSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
