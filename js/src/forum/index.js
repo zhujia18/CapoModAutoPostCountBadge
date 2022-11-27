@@ -8,6 +8,7 @@ import PostCountBadge from './components/PostCountBadge';
 app.initializers.add('capomod/auto-post-count-badge', () => {
   User.prototype.autoCountBadge = Model.attribute('autoCountBadge');
   User.prototype.autoCountBadgeLabel = Model.attribute('autoCountBadgeLabel');
+  User.prototype.autoCountBadgeStyle = Model.attribute('autoCountBadgeStyle');
 
   extend(PostUser.prototype, 'view', function (vnode) {
     const checkRoute = app.current.get('routeName');
@@ -24,13 +25,14 @@ app.initializers.add('capomod/auto-post-count-badge', () => {
       const userPosts = post.user().commentCount();
       const userClass = post.user().autoCountBadge();
       const userBadgeLabel = post.user().autoCountBadgeLabel();
+      const userBadgeStyle = post.user().autoCountBadgeStyle();
 
       // We don't have a class or label, so do nothing
-      if (userClass === '' || userBadgeLabel === '') {
+      if (userClass === '' || userBadgeLabel === '' || userBadgeStyle === '') {
         return;
       }
 
-      vnode.children.push(<PostCountBadge posts={userPosts} userClass={userClass} label={userBadgeLabel} />);
+      vnode.children.push(<PostCountBadge posts={userPosts} userClass={userClass} label={userBadgeLabel} style={userBadgeStyle} />);
     }
   });
 });

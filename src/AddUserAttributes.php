@@ -12,21 +12,10 @@
 namespace CapoMod\AutoPostCountBadge;
 
 use Flarum\Api\Serializer\UserSerializer;
-use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\User;
 
 class AddUserAttributes
 {   
-    /**
-     * @var SettingsRepositoryInterface
-     */
-    protected $settings;
-
-    public function __construct(SettingsRepositoryInterface $settings)
-    {
-        $this->settings = $settings;
-    }
-
     public function __invoke(UserSerializer $serializer, User $user, array $attribtues): array
     {
         if (!$user->isGuest()) {
@@ -34,6 +23,7 @@ class AddUserAttributes
 
             $attribtues['autoCountBadge'] = $this->getBadgeForLevel($level);
             $attribtues['autoCountBadgeLabel'] = $this->getBadgeLabelForLevel($level);
+            $attribtues['autoCountBadgeStyle'] = $this->getBadgeStyleForLevel($level);
         }
 
         return $attribtues;
@@ -103,7 +93,7 @@ class AddUserAttributes
             case $level === 2:
                 return 'Lv2-驾校开除';
             case $level === 3:
-                return 'Lv3-马路菜鸟';
+                return 'Lv3-菜鸟上路';
             case $level === 4:
                 return 'Lv4-学员车手';
             case $level === 5:
@@ -113,9 +103,35 @@ class AddUserAttributes
             case $level === 7:
                 return 'Lv7-顶级车手';
             case $level === 8:
-                return 'Lv8-传奇车手';
+                return 'Lv8-超级巨星';
             case $level === 9:
                 return 'Lv9-Capo传奇';
+            default:
+                return '';
+        }
+    }
+
+    private function getBadgeStyleForLevel(int $level): string
+    {
+        switch ($level) {
+            case $level === 1:
+                return 'auto-badge-style1';
+            case $level === 2:
+                return 'auto-badge-style1';
+            case $level === 3:
+                return 'auto-badge-style1';
+            case $level === 4:
+                return 'auto-badge-style2';
+            case $level === 5:
+                return 'auto-badge-style2';
+            case $level === 6:
+                return 'auto-badge-style2';
+            case $level === 7:
+                return 'auto-badge-style3';
+            case $level === 8:
+                return 'auto-badge-style3';
+            case $level === 9:
+                return 'auto-badge-style3';
             default:
                 return '';
         }
